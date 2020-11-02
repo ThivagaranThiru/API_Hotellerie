@@ -1,0 +1,1312 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "",
+    "version" : "1.0.0",
+    "title" : "API Hotel"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/MyBookingServices/DevOps_Cloud/1.0.0",
+  "tags" : [ {
+    "name" : "User",
+    "description" : "Crud user"
+  }, {
+    "name" : "Hotel",
+    "description" : "Crud hotel"
+  }, {
+    "name" : "Reservation",
+    "description" : "Crud reseravation"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/user/register" : {
+      "post" : {
+        "tags" : [ "User" ],
+        "summary" : "Creates a new user account.",
+        "description" : "Provided email address must be unique.",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "userItem",
+          "description" : "User item to add",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/UserRegister"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200"
+            }
+          },
+          "400" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400"
+            }
+          },
+          "409" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_409"
+            }
+          }
+        }
+      }
+    },
+    "/user/auth" : {
+      "post" : {
+        "tags" : [ "User" ],
+        "summary" : "User authentification.",
+        "description" : "Provided email address must be unique.",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "userAuth",
+          "description" : "User auth",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/UserAuth"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_1"
+            }
+          },
+          "400" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400"
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_401"
+            }
+          }
+        }
+      }
+    },
+    "/user/" : {
+      "get" : {
+        "tags" : [ "User" ],
+        "summary" : "Get Users.",
+        "description" : "Display All Users.",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/inline_response_200_2"
+              }
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/user/put" : {
+      "put" : {
+        "tags" : [ "User" ],
+        "summary" : "Update user.",
+        "description" : "",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "userItem",
+          "description" : "User item to update",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/UserPut"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_3"
+            }
+          },
+          "400" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400"
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/user/delete" : {
+      "delete" : {
+        "tags" : [ "User" ],
+        "summary" : "Delete user.",
+        "description" : "",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_4"
+            }
+          },
+          "400" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400_1"
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          },
+          "409" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_409_1"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/user/logout" : {
+      "delete" : {
+        "tags" : [ "User" ],
+        "summary" : "Logout user.",
+        "description" : "",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_5"
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/hotel/" : {
+      "get" : {
+        "tags" : [ "Hotel" ],
+        "summary" : "Get Hotels",
+        "description" : "Display All Hotels",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/inline_response_200_6"
+              }
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/hotel/post" : {
+      "post" : {
+        "tags" : [ "Hotel" ],
+        "summary" : "Creates a new Hotel.",
+        "description" : "Provided Hotel Name must be unique.",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "hotelItem",
+          "description" : "Hotel item to add",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/defHotel/HotelPost"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_7"
+            }
+          },
+          "400" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400"
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          },
+          "409" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_409_2"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/hotel/post/Element" : {
+      "post" : {
+        "tags" : [ "Hotel" ],
+        "summary" : "Add element.",
+        "description" : "Add Element in Array.",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "hotelElementItem",
+          "description" : "Hotel element item to add",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/defHotel/HotelPostElement"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_8"
+            }
+          },
+          "400" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400"
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/hotel/put" : {
+      "put" : {
+        "tags" : [ "Hotel" ],
+        "summary" : "Update item.",
+        "description" : "Update item in Array.",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "hotel Item",
+          "description" : "Hotel item to update",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/defHotel/HotelPut"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_9"
+            }
+          },
+          "400" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400"
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/hotel/delete/element" : {
+      "delete" : {
+        "tags" : [ "Hotel" ],
+        "summary" : "Delete Element in array.",
+        "description" : "Delete element in Array.",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "hotel Element Delete",
+          "description" : "Hotel Element Deleted",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/defHotel/HotelDeleteElement"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_10"
+            }
+          },
+          "400" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400"
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/hotel/delete/" : {
+      "delete" : {
+        "tags" : [ "Hotel" ],
+        "summary" : "Delete Hotel.",
+        "description" : "Delete hotel.",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "hotel Delete",
+          "description" : "Hotel Deleted",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/defHotel/HotelDelete"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_11"
+            }
+          },
+          "400" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400"
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          },
+          "409" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_409_3"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/reservation/{hotelName}" : {
+      "get" : {
+        "tags" : [ "Reservation" ],
+        "summary" : "Get Reservation",
+        "description" : "Display All Reservation",
+        "parameters" : [ {
+          "name" : "hotelName",
+          "in" : "path",
+          "description" : "String Name of the hotel to get",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/inline_response_200_6"
+              }
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          },
+          "409" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_409_3"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/reservation/post/{hotelName}" : {
+      "post" : {
+        "tags" : [ "Reservation" ],
+        "summary" : "Add reservation.",
+        "description" : "Add Reservation.",
+        "parameters" : [ {
+          "name" : "hotelName",
+          "in" : "path",
+          "description" : "String Name of the hotel to get",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "reservation ElementItem",
+          "description" : "Reservation to add",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/defResa/ResaPost"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_12"
+            }
+          },
+          "400" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400"
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          },
+          "409" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_409_4"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/reservation/delete/{hotelName}" : {
+      "delete" : {
+        "tags" : [ "Reservation" ],
+        "summary" : "Delete reservation.",
+        "description" : "Delete Reservation.",
+        "parameters" : [ {
+          "name" : "hotelName",
+          "in" : "path",
+          "description" : "String Name of the hotel to get",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "Delete reservation",
+          "description" : "Reservation to Delete",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/defResa/ResaDelete"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_13"
+            }
+          },
+          "400" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400"
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          },
+          "409" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_409_5"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/reservation/byUser/{optionnal:hotelName}" : {
+      "get" : {
+        "tags" : [ "Reservation" ],
+        "summary" : "Get Reservation ByUser",
+        "description" : "Display All Reservation ByUser",
+        "parameters" : [ {
+          "name" : "optionnal:hotelName",
+          "in" : "path",
+          "description" : "String Name of the hotel to get",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/inline_response_200_14"
+              }
+            }
+          },
+          "400" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_400"
+            }
+          },
+          "401" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/unauthorize/responses/UnauthorizedError"
+            }
+          },
+          "409" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_409_3"
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    }
+  },
+  "definitions" : {
+    "UserRegister" : {
+      "type" : "object",
+      "required" : [ "email", "password" ],
+      "properties" : {
+        "email" : {
+          "type" : "string",
+          "example" : "swagger@hotmail.com",
+          "description" : "Email"
+        },
+        "password" : {
+          "type" : "string",
+          "example" : "124K8t9iHn!",
+          "description" : "Password"
+        },
+        "nom" : {
+          "type" : "string",
+          "example" : "Test",
+          "description" : "Name"
+        }
+      }
+    },
+    "UserAuth" : {
+      "type" : "object",
+      "required" : [ "email", "password" ],
+      "properties" : {
+        "email" : {
+          "type" : "string",
+          "example" : "swagger@hotmail.com",
+          "description" : "Email"
+        },
+        "password" : {
+          "type" : "string",
+          "example" : "124K8t9iHn!",
+          "description" : "Password"
+        }
+      }
+    },
+    "UserPut" : {
+      "type" : "object",
+      "required" : [ "query" ],
+      "properties" : {
+        "query" : {
+          "type" : "object",
+          "properties" : { }
+        },
+        "playload" : {
+          "$ref" : "#/definitions/UserPut_playload"
+        }
+      }
+    },
+    "inline_response_200" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "User created successfully!",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : true,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_400" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "Bad request parameters: {}",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : false,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_409" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "User already registered",
+          "description" : "Error"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : false,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_200_1_data" : {
+      "type" : "object",
+      "properties" : {
+        "email" : {
+          "type" : "string",
+          "example" : "swagger@hotmail.com",
+          "description" : "Email"
+        },
+        "nom" : {
+          "type" : "string",
+          "example" : "Test",
+          "description" : "Name"
+        },
+        "token" : {
+          "type" : "string",
+          "example" : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTU4ODQxNDIsIm5iZiI6MTU5NTg4NDE0MiwianRpIjoiNzQ4YTc4NGMtY2YwYi00MjA2LWI4NjItODFkM2JlMjllYzQxIiwiZXhwIjoxNTk1OTcwNTQyLCJpZGVudGl0eSI6eyJlbWFpbCI6InRoaXJ1Y190QGV0bmEtYWx0ZXJuYW5jZS5uZXQiLCJwYXNzd29yZCI6InBhc3N3b3JkIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.F112-shUH2pl5ejOhlVupoI8bU1plQi6B4Xs_yB_fuE",
+          "description" : "Token"
+        }
+      }
+    },
+    "inline_response_200_1" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "$ref" : "#/definitions/inline_response_200_1_data"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : true,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_401" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "invalid email or password",
+          "description" : "Error"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : false,
+          "description" : ""
+        }
+      }
+    },
+    "user_id" : {
+      "type" : "object",
+      "properties" : {
+        "$iod" : {
+          "type" : "string",
+          "example" : "5f1f4267af0a8a1cc488a4d3",
+          "description" : ""
+        }
+      }
+    },
+    "user_password" : {
+      "type" : "object",
+      "properties" : {
+        "$binary" : {
+          "type" : "string",
+          "example" : "JDJiJDEyJC51OWx5VUZuV3ouTElRM3k3d1VBbE94d0U0MDYzUTFhN2lKeEJHNUdlNmN4dG1BWDVpUS9X",
+          "description" : ""
+        },
+        "$type" : {
+          "type" : "string",
+          "example" : "00",
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_200_2" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "$ref" : "#/definitions/user_id"
+        },
+        "email" : {
+          "type" : "string",
+          "example" : "swagger@hotmail.com",
+          "description" : "Email"
+        },
+        "nom" : {
+          "type" : "string",
+          "example" : "Test",
+          "description" : "Name"
+        },
+        "password" : {
+          "$ref" : "#/definitions/user_password"
+        }
+      }
+    },
+    "inline_response_200_3" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "User updated. Please Reconnect",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : true,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_200_4" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "User deleted. Please Register",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : true,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_400_1" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "Bad request parameters !",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : false,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_409_1" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "User not found",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : false,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_200_5" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "Successfully logged out. Please reconnect",
+          "description" : "Message"
+        }
+      }
+    },
+    "hotel_Chambres" : {
+      "type" : "object",
+      "properties" : {
+        "Categorie" : {
+          "type" : "string",
+          "example" : "Suite",
+          "description" : "Categorie Chambre"
+        },
+        "Prix($)" : {
+          "type" : "string",
+          "example" : "720",
+          "description" : "Prix Chambre"
+        },
+        "Max_Pers" : {
+          "type" : "string",
+          "example" : "3",
+          "description" : "Maximum de personne Chambre"
+        },
+        "Indice" : {
+          "type" : "string",
+          "example" : "S",
+          "description" : "Indice Chambre"
+        },
+        "Quantite" : {
+          "type" : "string",
+          "example" : "1",
+          "description" : "Quantite Chambre"
+        }
+      }
+    },
+    "hotel_Services" : {
+      "type" : "object",
+      "properties" : {
+        "Categorie" : {
+          "type" : "string",
+          "example" : "Place de Garage",
+          "description" : "Categorie Service"
+        },
+        "Prix($)" : {
+          "type" : "string",
+          "example" : "25",
+          "description" : "Prix Service"
+        },
+        "Quantite" : {
+          "type" : "string",
+          "example" : "3",
+          "description" : "Quantite Service"
+        }
+      }
+    },
+    "hotel_PolitiquePrix" : {
+      "type" : "object",
+      "properties" : {
+        "Categorie" : {
+          "type" : "string",
+          "example" : "Nuit Vendredi et Samedi",
+          "description" : "Categorie Politique"
+        },
+        "Facture" : {
+          "type" : "string",
+          "example" : "Majorer",
+          "description" : "Facture Politque Prix"
+        },
+        "Taux(%)" : {
+          "type" : "string",
+          "example" : "15",
+          "description" : "Taux Politique des prix"
+        },
+        "Indice" : {
+          "type" : "string",
+          "example" : "NVS",
+          "description" : "Indice Chambre"
+        }
+      }
+    },
+    "hotel_Chambres_1" : {
+      "type" : "object",
+      "properties" : {
+        "Categorie" : {
+          "type" : "string",
+          "example" : "Suite",
+          "description" : "Categorie Chambre"
+        },
+        "Pers" : {
+          "type" : "string",
+          "example" : "1",
+          "description" : "Nb de pers"
+        }
+      }
+    },
+    "hotel_Services_1" : {
+      "type" : "object",
+      "properties" : {
+        "Categorie" : {
+          "type" : "string",
+          "example" : "Place de Garage",
+          "description" : "Categorie Service"
+        }
+      }
+    },
+    "hotel_Reservations" : {
+      "type" : "object",
+      "properties" : {
+        "DateDebut" : {
+          "type" : "string",
+          "example" : "22/07/2020",
+          "description" : "Date debut de réservation"
+        },
+        "DateFin" : {
+          "type" : "string",
+          "example" : "23/07/2020",
+          "description" : "Date Fin de réservation"
+        },
+        "Chambres" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/hotel_Chambres_1"
+          }
+        },
+        "Services" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/hotel_Services_1"
+          }
+        }
+      }
+    },
+    "inline_response_200_6" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "$ref" : "#/definitions/user_id"
+        },
+        "Proprietaire" : {
+          "type" : "string",
+          "example" : "swagger@hotmail.com",
+          "description" : "Email"
+        },
+        "Nom" : {
+          "type" : "string",
+          "example" : "Hotel 1",
+          "description" : "Name Hotel"
+        },
+        "Description" : {
+          "type" : "string",
+          "example" : "Le Plaza Athenee avec ses 5 etoiles",
+          "description" : "Description Hotel"
+        },
+        "Adresse" : {
+          "type" : "string",
+          "example" : "25, avenue Montaigne, 75008 Paris",
+          "description" : "Adresse Hotel"
+        },
+        "Chambres" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/hotel_Chambres"
+          }
+        },
+        "Services" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/hotel_Services"
+          }
+        },
+        "PolitiquePrix" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/hotel_PolitiquePrix"
+          }
+        },
+        "Reservations" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/hotel_Reservations"
+          }
+        }
+      }
+    },
+    "inline_response_200_7" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "Hotel created successfully!",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : true,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_409_2" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "Hotel name already registered",
+          "description" : "Error"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : false,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_200_8" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "Element added",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : true,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_200_9" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "hotel updated",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : true,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_200_10" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "Element Deleted",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : true,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_200_11" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "Hotel Deleted",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : true,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_409_3" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "Hotel not found",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : false,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_200_12" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "You will receive mail confirmation. Total price 100 ",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : true,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_409_4" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "You reservation is empty. Please retry",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : false,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_200_13" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "Reservation deleted",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : true,
+          "description" : ""
+        }
+      }
+    },
+    "inline_response_409_5" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "Reservation not existed.",
+          "description" : "Message"
+        },
+        "ok" : {
+          "type" : "boolean",
+          "example" : false,
+          "description" : ""
+        }
+      }
+    },
+    "reservationbyUseroptionnalhotelName_Reservations" : {
+      "type" : "object",
+      "properties" : {
+        "DateDebut" : {
+          "type" : "string",
+          "example" : "22/07/2020",
+          "description" : "Date debut de réservation"
+        },
+        "DateFin" : {
+          "type" : "string",
+          "example" : "23/07/2020",
+          "description" : "Date Fin de réservation"
+        },
+        "Chambres" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/hotel_Chambres_1"
+          }
+        }
+      }
+    },
+    "inline_response_200_14" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "$ref" : "#/definitions/user_id"
+        },
+        "Client" : {
+          "type" : "string",
+          "example" : "swagger@hotmail.com",
+          "description" : "Client réservation"
+        },
+        "prix_total($)" : {
+          "type" : "string",
+          "example" : "1234",
+          "description" : "700$"
+        },
+        "NReservation" : {
+          "type" : "string",
+          "example" : "1234",
+          "description" : "Client réservation"
+        },
+        "Reservations" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/reservationbyUseroptionnalhotelName_Reservations"
+          }
+        }
+      }
+    },
+    "UserPut_playload" : {
+      "type" : "object",
+      "properties" : {
+        "password" : {
+          "type" : "string",
+          "example" : "New Password",
+          "description" : "Password"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1841 @@
+{
+	"info": {
+		"_postman_id": "6253d681-e71c-4a61-b8c1-857ed649a65a",
+		"name": "CLOUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "test_register_users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a92addfe-1c58-4d08-9a2f-88dfe2a27aec",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \t\"nom\":\"thiva\",\n \t\"email\":\"patron@hotmail.fr\",\n \t\"password\":\"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_register_bad_request_users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4abcb2e9-170c-4aea-b4e7-8d18820cf888",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\"name\":\"thiva\",\n \t\"email\":\"patron@hotmail.fr\",\n \t\"password\":\"password\"\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_register_email_exist_users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a4082e29-14fa-4d97-a4d3-5914fa764f91",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\"nom\":\"thiva\",\n \t\"email\":\"patron@hotmail.fr\",\n \t\"password\":\"password\"\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_auth_user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "880b595b-6e62-418b-a9dc-123838b8c768",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f4e2ecd0-1c40-4027-a0e3-a9b8d14f2483",
+						"exec": [
+							"let jsonData = pm.response.json();",
+							"postman.setEnvironmentVariable(\"token\", jsonData.data.token);",
+							"",
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\"email\":\"patron@hotmail.fr\",\n \t\"password\":\"password\"\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/user/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_auth_bad_request_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd71639a-ca1b-4e93-9988-6f1ea3e8435d",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\"mail\":\"patron@hotmail.fr\",\n \t\"password\":\"password\"\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/user/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_auth_user_invalid_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "be888ae9-6cc8-4e2d-aa8c-f0ee39e02607",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\"email\":\"patron@hotmail.fr\",\n \t\"password\":\"wrong\"\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/user/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_get_unauthorized_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b87c3367-70de-4f43-b1bb-2858d4cff9d9",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8881/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_get_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa2f34b6-2bad-49e3-bc53-041f2a1355ca",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8881/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_put_bad_request_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8c39465a-9da4-44bc-92b7-c9888339f4e3",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"queryc\": {\n    },\n    \"payload\": {\n    \t\"password\": \"password\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_post_hotel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "310ecd9f-1ff4-49ac-aa59-0c8b4bc91763",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Nom\": \"Hotel 1\",\n    \"Description\": \"Le Plaza Athenee avec ses 5 etoiles\",\n    \"Address\": \"25, avenue Montaigne, 75008 Paris\",\n    \"Telephone\": \"0153676665\",\n    \"Chambres\": [\n        {\n            \"Categorie\": \"Suite\",\n            \"Prix($)\": \"720\",\n            \"Max_Pers\": \"3\",\n            \"Indice\": \"S\",\n            \"Quantite\": \"1\"\n        },\n        {\n            \"Categorie\": \"Junior Suite\",\n            \"Prix($)\": \"500\",\n            \"Max_Pers\": \"2\",\n            \"Indice\": \"JS\",\n            \"Quantite\": \"1\"\n        },\n        {\n            \"Categorie\": \"Chambre de luxe\",\n            \"Prix($)\": \"300\",\n            \"Max_Pers\": \"2\",\n            \"Indice\": \"CD\",\n            \"Quantite\": \"1\"\n        },\n        {\n            \"Categorie\": \"Chambre standard\",\n            \"Prix($)\": \"150\",\n            \"Max_Pers\": \"2\",\n            \"Indice\": \"CS\",\n            \"Quantite\": 2\n        }\n    ],\n    \"Services\": [\n        {\n            \"Categorie\": \"Place de garage\",\n            \"Prix($)\": \"25\",\n            \"Quantite\": \"3\"\n        },\n        {\n            \"Categorie\": \"Lit bebe\",\n            \"Prix($)\": \"0\",\n            \"Quantite\": \"2\"\n        }\n    ],\n    \"PolitiquePrix\": [\n        {\n            \"Categorie\": \"Nuit Vendredi et Samedi\",\n            \"Facture\": \"Majorer\",\n            \"Taux(%)\": \"15\",\n            \"Indice\": \"NVS\"\n        },\n        {\n            \"Categorie\": \"Nuit Mercredi et Jeudi\",\n            \"Facture\": \"Minorer\",\n            \"Taux(%)\": \"10\",\n            \"Indice\": \"NMJ\"\n        },\n        {\n            \"Categorie\": \"Solo\",\n            \"Facture\": \"Minorer\",\n            \"Taux(%)\": \"5\",\n            \"Indice\": \"S\"\n        }\n    ],\n    \"Reservations\": [\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/hotel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_post_exist_hotel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b82caec5-9de5-4fad-b787-45567dc8a627",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Nom\": \"Hotel 1\",\n    \"Description\": \"Le Plaza Athenee avec ses 5 etoiles\",\n    \"Address\": \"25, avenue Montaigne, 75008 Paris\",\n    \"Telephone\": \"0153676665\",\n    \"Chambres\": [\n        {\n            \"Categorie\": \"Suite\",\n            \"Prix($)\": \"720\",\n            \"Max_Pers\": \"3\",\n            \"Indice\": \"S\",\n            \"Quantite\": \"1\"\n        },\n        {\n            \"Categorie\": \"Junior Suite\",\n            \"Prix($)\": \"500\",\n            \"Max_Pers\": \"2\",\n            \"Indice\": \"JS\",\n            \"Quantite\": \"1\"\n        },\n        {\n            \"Categorie\": \"Chambre de luxe\",\n            \"Prix($)\": \"300\",\n            \"Max_Pers\": \"2\",\n            \"Indice\": \"CD\",\n            \"Quantite\": \"1\"\n        },\n        {\n            \"Categorie\": \"Chambre standard\",\n            \"Prix($)\": \"150\",\n            \"Max_Pers\": \"2\",\n            \"Indice\": \"CS\",\n            \"Quantite\": \"2\"\n        }\n    ],\n    \"Services\": [\n        {\n            \"Categorie\": \"Place de garage\",\n            \"Prix($)\": \"25\",\n            \"Quantite\": \"3\"\n        },\n        {\n            \"Categorie\": \"Lit bebe\",\n            \"Prix($)\": \"0\",\n            \"Quantite\": \"2\"\n        }\n    ],\n    \"PolitiquePrix\": [\n        {\n            \"Categorie\": \"Nuit Vendredi et Samedi\",\n            \"Facture\": \"Majorer\",\n            \"Taux(%)\": \"15\",\n            \"Indice\": \"NVS\"\n        },\n        {\n            \"Categorie\": \"Nuit Mercredi et Jeudi\",\n            \"Facture\": \"Minorer\",\n            \"Taux(%)\": \"10\",\n            \"Indice\": \"NMJ\"\n        },\n        {\n            \"Categorie\": \"Solo\",\n            \"Facture\": \"Minorer\",\n            \"Taux(%)\": \"5\",\n            \"Indice\": \"S\"\n        }\n    ],\n    \"Reservations\": [\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/hotel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_post_element_hotel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "47c824d1-4a86-42c2-96f4-a147ea175189",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": {\n        \"Nom\": \"Hotel 1\"\n   },\n   \"payload\": {\n        \"Services\": {\n            \"Categorie\": \"Un lit en plus\",\n            \"Price\": \"50$\",\n            \"Quantite\": \"5\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/hotel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_put_element_hotel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8a37aa5f-764e-49b7-8551-d9baab619d1e",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": {\n        \"Nom\": \"Hotel 1\",\n        \"Services.Categorie\": \"Place de garage\"\n   },\n   \"payload\": {\n       \"Services.$.Quantite\": \"20\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/hotel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_put_hotel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1cfbf3d-3308-4e60-959f-7b1420b392b2",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"query\": {\n        \"Nom\": \"Hotel 1\"\n    },\n    \"payload\": {\n        \"Description\": \"La desciption a été modifié\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/hotel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_delete_element_hotel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "28709a30-bab1-4f5e-bcd2-fbdb638968f9",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": {\n        \"Nom\": \"Hotel 1\",\n        \"Services.Categorie\": \"Lit bebe\"\n    },\n    \"payload\": {\n        \"Services\": {\n            \"Categorie\": \"Lit bebe\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/hotel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_get_hotel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8e34e8f-f658-4113-aac9-4d2adc4cd94d",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8881/hotel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_get_unauthorized_hotel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cc94598c-d2e2-4572-b75e-debf9d466799",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8881/hotel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_delete_unauthorized_hotel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e97412b0-0df0-4a35-9a4c-1e6494f5f6e3",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Nom\": \"Hotel 0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/hotel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_logout_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d49c1da2-d6cd-4b24-91ee-be3fee657dc4",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8881/user/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_register_client_users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09cd9d06-4268-41ef-ae1b-80b995355972",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nom\": \"test\",\n    \"email\": \"thiruc_t@etna-alternance.net\",\n    \"password\": \"client\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_auth_client_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bec575a9-b4a2-40b5-a21f-f7c976efb842",
+						"exec": [
+							"let jsonData = pm.response.json();",
+							"postman.setEnvironmentVariable(\"token\", jsonData.data.token);",
+							"",
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"thiruc_t@etna-alternance.net\",\n    \"password\": \"client\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/user/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_param_not_exit_reservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca3c941b-7bfe-4661-9e21-d6304c5df418",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8881/reservation/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"reservation",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_get_reservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23718da2-4f20-413e-9db7-12b357979c02",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8881/reservation/?Nom=Hotel 1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"reservation",
+						""
+					],
+					"query": [
+						{
+							"key": "Nom",
+							"value": "Hotel 1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_post_reservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "04161502-ec73-40ef-8899-e539b6362fda",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"Reservations\": {\n        \"DateDebut\": \"22/07/2020\",\n        \"DateFin\": \"23/07/2020\",\n        \"Chambres\": [\n            {\n                \"Categorie\": \"Suite\",\n                \"Pers\": \"1\"\n            },\n            {\n                \"Categorie\": \"Junior Suite\",\n                \"Pers\": \"1\"\n            }\n        ],\n        \"Services\": [\n            {\n                \"Categorie\": \"Place de garage\"\n            }\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/reservation/?Nom=Hotel 1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"reservation",
+						""
+					],
+					"query": [
+						{
+							"key": "Nom",
+							"value": "Hotel 1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_post_not_reservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f818af3d-ed51-44b4-ac5c-e1155d0a5cf3",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"Reservations\": {\n        \"DateDebut\": \"22/07/2020\",\n        \"DateFin\": \"23/07/2020\",\n        \"Chambres\": [\n            {\n                \"Categorie\": \"Suite\",\n                \"Pers\": \"1\"\n            },\n            {\n                \"Categorie\": \"Junior Suite\",\n                \"Pers\": \"1\"\n            }\n        ],\n        \"Services\": [\n            {\n                \"Categorie\": \"Place de garage\"\n            }\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/reservation/?Nom=Hotel 1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"reservation",
+						""
+					],
+					"query": [
+						{
+							"key": "Nom",
+							"value": "Hotel 1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_get_user_reservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e00d0455-2920-4aa3-ab57-5f7ff76e602e",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8881/reservation/byUser/?Nom=Hotel 1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"reservation",
+						"byUser",
+						""
+					],
+					"query": [
+						{
+							"key": "Nom",
+							"value": "Hotel 1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_delete_not_exit_reservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0dc4bac2-ee8d-4d4a-b152-6131dfd7db79",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": {\n        \"Reservations.NReservation\": \"12345\"\n    },\n    \"payload\": {\n       \"Reservations\": {\n            \"NReservation\": \"12345\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/reservation/?Nom=Hotel 1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"reservation",
+						""
+					],
+					"query": [
+						{
+							"key": "Nom",
+							"value": "Hotel 1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_delete_reservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "96eddb91-112f-4083-ba46-9429ba9db8c7",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": {\n        \"Reservations.NReservation\": \"1234\"\n    },\n    \"payload\": {\n        \"Reservations\": {\n            \"NReservation\": \"1234\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/reservation/?Nom=Hotel 1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"reservation",
+						""
+					],
+					"query": [
+						{
+							"key": "Nom",
+							"value": "Hotel 1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_delete_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4d359cc3-de92-4b0a-9f94-da9872ba538c",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8881/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_auth1_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7208ab7a-5d87-46bd-ac29-f09863828474",
+						"exec": [
+							"let jsonData = pm.response.json();",
+							"postman.setEnvironmentVariable(\"token\", jsonData.data.token);",
+							"",
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\"email\":\"patron@hotmail.fr\",\n \t\"password\":\"password\"\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/user/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_delete_hotel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "33bddd60-bf57-45b0-a93a-10b501cbd4f3",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Nom\": \"Hotel 1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/hotel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_put_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2e95c9e4-47f4-42b6-84a3-8f8cb1bab6cc",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": {\n    },\n    \"payload\": {\n       \"password\": \"newpassword\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_auth2_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd414746-be08-4cbf-a07a-313d857fcdb0",
+						"exec": [
+							"let jsonData = pm.response.json();",
+							"postman.setEnvironmentVariable(\"token\", jsonData.data.token);",
+							"",
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"patron@hotmail.fr\",\n    \"password\": \"newpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/user/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_delete2_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbc8ed18-9089-49e8-90ef-100c06b55980",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8881/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
