@@ -29,7 +29,9 @@ https://app.swaggerhub.com/apis/MyBookingServices/DevOps_Cloud/1.0.0#trial
 https://app.swaggerhub.com/apis-docs/MyBookingServices/DevOps_Cloud/1.0.0#/
 
 
-Technologies utilisées : Python3, Framework Flask (flask_pymongo, flask_mail, flask_jwt_extended & flask_bcryp), MongoDB, Swagger, Postman, PyTest (Test Unitaire) et Newman (Test Fonctionnel).
+Technologies utilisées : 
+
+Python3, Framework Flask (flask_pymongo, flask_mail, flask_jwt_extended & flask_bcryp), MongoDB, Swagger, Postman, PyTest (Test Unitaire) et Newman (Test Fonctionnel).
 
 
 
